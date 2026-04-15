@@ -34,6 +34,22 @@
 
                     </div>
 
+                    <h3 style="margin-top:30px;">Rice Stocks</h3>
+
+                    <table style="width:100%; background:white; border-collapse:collapse;">
+                        <tr style="background:#2d2d2d; color:white;">
+                            <th style="padding:10px;">Name</th>
+                            <th style="padding:10px;">Stock</th>
+                        </tr>
+
+                        @foreach($rices as $rice)
+                        <tr>
+                            <td style="padding:10px;">{{ $rice->name }}</td>
+                            <td style="padding:10px;">{{ $rice->stock }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+
                 </div>
             </div>
 

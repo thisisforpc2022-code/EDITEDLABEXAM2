@@ -31,7 +31,7 @@ class PaymentController extends Controller
     {
         Payment::create([
             'order_id' => $request->order_id,
-            'order_status' => 'Paid'
+            'status' => 'Unpaid'
         ]);
         return redirect()->route('payments.index');
     }
@@ -70,4 +70,24 @@ class PaymentController extends Controller
     {
         //
     }
+    public function markPaid(Payment $payment)
+{
+    if ($payment->status === 'Paid') {
+        return redirect()->route('payments.index');
+    }
+
+    $payment->update([
+        'status' => 'Paid'
+    ]);
+
+    $order = $payment->order;
+
+    $rice = $order->rice;
+
+    $rice->update([
+        'stock' => $rice->stock - $order->quantity
+    ]);
+
+    return redirect()->route('payments.index');
+}
 }

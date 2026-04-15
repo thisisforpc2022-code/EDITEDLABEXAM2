@@ -42,16 +42,11 @@
                     </td>
 
                     <td style="padding:10px;">
-
                         @if($payment->status == 'Unpaid')
-                        <form action="{{ route('payments.update', $payment->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-
-                            <button style="background:green;color:white;border:none;padding:5px 10px;border-radius:4px;">
-                                Mark Paid
-                            </button>
-                        </form>
+                        <a href="{{ url('payments/'.$payment->id.'/paid') }}"
+                        style="background:green;color:white;padding:5px 10px;border-radius:4px;text-decoration:none;">
+                            Mark Paid
+                        </a>
                         @else
                             ✔ Done
                         @endif

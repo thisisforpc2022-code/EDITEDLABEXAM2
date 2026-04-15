@@ -13,7 +13,7 @@ class Payment extends Model
         'status'
     ];
 
-
+    
     public function order(){
         return $this->belongsTo(Order::class);
     }
